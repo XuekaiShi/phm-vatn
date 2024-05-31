@@ -1,0 +1,8 @@
+DATA_RAW_PATH = 'JNUData'
+DATA_PATH = 'data'
+
+SAMPLES_NUMBER = 1000
+SAMPLE_WINDOW = 1000
+
+TEST_RATE = 0.2
+LABELS_MAP = {'n': 0, 't': 1, 'o': 2, 'i': 3}

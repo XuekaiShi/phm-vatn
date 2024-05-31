@@ -8,18 +8,20 @@ import torch
 from torch.utils.data import Dataset
 import torch.nn.functional as F
 
-DATA_RAW_PATH = 'JNUData'
-DATA_PATH = 'data'
+from utils.params import DATA_PATH, DATA_RAW_PATH, SAMPLE_WINDOW, SAMPLES_NUMBER, TEST_RATE, LABELS_MAP
 
-SAMPLES_NUMBER = 1000
-SAMPLE_WINDOW = 1000
+# DATA_RAW_PATH = 'JNUData'
+# DATA_PATH = 'data'
 
-TEST_RATE = 0.2
+# SAMPLES_NUMBER = 1000
+# SAMPLE_WINDOW = 1000
+
+# TEST_RATE = 0.2
 TRAIN_SET_PATH = os.path.join(DATA_PATH, 'train')
 TEST_SET_PATH = os.path.join(DATA_PATH, 'test')
 
 # BATCH_SIZE = 128
-LABELS_MAP = {'n': 0, 't': 1, 'o': 2, 'i': 3}
+# LABELS_MAP = {'n': 0, 't': 1, 'o': 2, 'i': 3}
 
 def preprocess_data():
 
