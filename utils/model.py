@@ -32,8 +32,8 @@ class VATN(nn.Module):
         self.conv = nn.Conv1d(in_channels=1, out_channels=256, kernel_size=50, stride=25)
         self.pos_encoder = PositionalEncoding(256)
         self.encoder = nn.TransformerEncoder(
-            nn.TransformerEncoderLayer(d_model=256, nhead=8, dim_feedforward=1024, batch_first=True),
-            num_layers=8)
+            nn.TransformerEncoderLayer(d_model=256, nhead=8, dropout=0.2, dim_feedforward=1024, batch_first=True),
+            num_layers=3)
         self.max_pool = nn.AdaptiveMaxPool1d(4)
         self.avg_pool = nn.AdaptiveAvgPool1d(4)
         self.flatten = nn.Flatten()
@@ -50,7 +50,7 @@ class VATN(nn.Module):
         x = torch.cat((x_1, x_2), dim=2)
         x = self.flatten(x)
         x = self.fc_1(x)
-        x = F.relu(x)
+        # x = F.relu(x)
         x = self.fc_2(x)
         x = self.softmax(x)
         return x

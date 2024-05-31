@@ -5,7 +5,8 @@ import random
 import pandas as pd
 
 import torch
-from torch.utils.data import DataLoader, Dataset
+from torch.utils.data import Dataset
+import torch.nn.functional as F
 
 DATA_RAW_PATH = 'JNUData'
 DATA_PATH = 'data'
@@ -84,7 +85,7 @@ def preprocess_data():
         shutil.rmtree(os.path.join(DATA_PATH, class_folder))
 
 class JNUDataset(Dataset):
-    def __init__(self, data_path, is_train=True):
+    def __init__(self, data_path, is_train=True, device='cpu'):
         self.data_path = data_path
         if is_train:
             path = os.path.join(data_path, 'train')
@@ -92,18 +93,18 @@ class JNUDataset(Dataset):
         else:
             path = os.path.join(data_path, 'test')
             classes_names = os.listdir(path)
-        self.data = []
-        self.labels = []
+        data = []
+        labels = []
         for class_name in classes_names:
             files_names = os.listdir(os.path.join(path, class_name))
             for file_name in files_names:
                 tmp = pd.read_csv(os.path.join(path, class_name, file_name), header=None)
                 tmp = tmp.values.squeeze().tolist()
-                self.data.append(tmp)
-                self.labels.append(LABELS_MAP[class_name])
-        self.data = torch.tensor(self.data)
-        self.data = torch.unsqueeze(self.data, 1)
-        self.labels = torch.tensor(self.labels)
+                data.append(tmp)
+                labels.append(LABELS_MAP[class_name])
+        data = torch.tensor(data).to(device)
+        self.data = torch.unsqueeze(data, 1)
+        self.labels = F.one_hot(torch.tensor(labels).to(device))
     def __len__(self):
         return len(self.labels)
     
