@@ -3,12 +3,9 @@ import math
 import torch
 from torch import Tensor
 import torch.nn as nn
-# import torch.optim as optim
-# from torch.utils.data import Dataset, DataLoader
 import torch.nn.functional as F
 
 class PositionalEncoding(nn.Module):
-
     def __init__(self, d_model: int, dropout: float = 0.1, max_len: int = 5000):
         super().__init__()
         self.dropout = nn.Dropout(p=dropout)
