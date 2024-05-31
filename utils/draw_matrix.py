@@ -9,7 +9,7 @@ classes = list(LABELS_MAP.values())
 
 def draw_confusion_matrix(y_true, y_pred):
     cm = confusion_matrix(y_true, y_pred)
-    print(cm)
+    # print(cm)
     cmap=plt.cm.Blues
     plt.figure(figsize=(8, 8))
     
