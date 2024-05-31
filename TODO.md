@@ -1,2 +1,2 @@
-- [ ] to device
-- [ ] 
+- [x] to device
+- [] 
