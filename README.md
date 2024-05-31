@@ -9,3 +9,6 @@ The dataset is sourced from [JNU Dataset](https://github.com/ClarkGableWang/JNU-
 2. Rename the downloaded dataset to utils.params.DATA_RAW_PATH(which is 'JNUData' now)
 3. Remeber delete the '.git' and 'readme.md' files in the dataset floder
 4. Run the code
+
+TODO:
+1. Varitional Attention
