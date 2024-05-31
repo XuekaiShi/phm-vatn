@@ -33,6 +33,7 @@ def train(model, num_epochs, train_loader):
     plt.plot(acc_history)
 
 def test(model, test_loader):
+    model.eval()
     correct = 0
     all_pred_labels = torch.tensor([])
     all_true_labels = torch.tensor([])
